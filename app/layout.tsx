@@ -1,14 +1,15 @@
 import Navigation from "@/app/components/Navigation";
 
-export default function RootLayout() {
+export default function RootLayout({children}: any) {
     return <html lang="en">
     <body>
     <Navigation/>
+    <main>{children}</main>
     </body>
     </html>
 }
 
-// Ici, le root layout renvoie toujours le même élément. Ainsi, je peux cliquer sur n'importe quel lien de redirection, le composant est toujours renvoyé, même si l'URL change.
+// Le prop children en React est essentiel pour intégrer le contenu des pages dans une mise en page, permettant de rendre dynamiquement chaque page ou modèle enfant au sein du layout principal, similaire au concept d'Outlet dans React Router.
 
 
 
