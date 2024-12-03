@@ -1,6 +1,14 @@
+import Link from "next/link";
+import Navigation from "@/app/components/Navigation";
 
 export default function Home() {
-  return (
-   <h1>Hello next</h1>
-  );
+    return (
+        <>
+            <Navigation />
+            <h1>Welcom to the Wild </h1>
+
+            {/*Optimisation SPA checker la doc concernant le cache ...*/}
+            <Link href="/cabins">Explore luxury cabins</Link>
+        </>
+    );
 }
