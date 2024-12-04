@@ -1,5 +1,9 @@
 import ReservationCard from "@/app/_components/ReservationCard";
 
+export const metadata = {
+    title: "Effectuer une reservation",
+}
+
 export default function Page() {
     // fecth dans la fake api ou creer object plus tard
     const bookings = [];
