@@ -1,3 +1,5 @@
+import Counter from "@/app/components/Counter";
+
 export default async function Page() {
 
     const res = await fetch('https://jsonplaceholder.typicode.com/users')
@@ -13,5 +15,6 @@ export default async function Page() {
                 </ul>
             </li>
         ))}</ul>
+        <Counter/>
     </div>
 }
