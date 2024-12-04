@@ -1,7 +1,13 @@
 import Navigation from "@/app/_components/Navigation";
 import Logo from "@/app/_components/Logo";
 
+import {Josefin_Sans} from "next/font/google";
 import "@/app/_styles/globals.css"
+
+const josefin = Josefin_Sans({
+    subsets: ['latin'],
+    display: "swap",
+})
 
 export const metadata = {
     title: {
@@ -14,7 +20,7 @@ export const metadata = {
 export default function RootLayout({children}: { children: React.ReactNode }) {
     return (
         <html lang="en">
-        <body className="bg-primary-950 text-primary-100 min-h-screen">
+        <body className={`${josefin.className} bg-primary-950 text-primary-100 min-h-screen`}>
         <header>
             <Logo/>
             <Navigation/>
@@ -30,5 +36,16 @@ export default function RootLayout({children}: { children: React.ReactNode }) {
 
 
 
+// console.log(josefin);
+// {
+//     style: {
+//         fontFamily: "'Josefin Sans', 'Josefin Sans Fallback'",
+//             fontStyle: 'normal'
+//     },
+//     className: '__className_2ad2c0' // ici
+// }
+
+
+// Nous permet de connaitre la classNae que l'on souhaite utiliser si jamais on ne sait pas ou le trouver
 
 
