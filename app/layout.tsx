@@ -8,11 +8,8 @@ export const metadata = {
         template: "%s / The Wild Hotel",
         default: "Welcome / The Wild Hotel"
     },
-    description: "Luxury cabin hotel, located in in the heart fo the Mordore, surrounded by creepy orcs and demons"
+    description: "Luxury cabin hotel, located in in the heart fo the Mordore, surrounded by creepy orcs and demons",
 }
-
-// La description ici est celle par defaut, si comme dans les autres page je viens overide cette desc comme pour le title par exemple, je pourrais personnaliser la description de chaque page et donc optimiser le SEO
-
 
 export default function RootLayout({children}: { children: React.ReactNode }) {
     return (
