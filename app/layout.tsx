@@ -4,7 +4,10 @@ import Logo from "@/app/_components/Logo";
 import "@/app/_styles/globals.css"
 
 export const metadata = {
-    title: "The Wild Hotel",
+    title: {
+        template: "%s / The Wild Hotel",
+        default: "Welcome / The Wild Hotel"
+    },
 }
 
 
