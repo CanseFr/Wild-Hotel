@@ -8,12 +8,12 @@ export default function Logo() {
       <Image
         src={logo}
         height='60'
-        quality={100}
         width='60'
+        quality={100}
         alt='The Wild hotel logo'
       />
       <span className='text-xl font-semibold text-primary-100'>
-        The Wild hotel
+        The Wild Hotel
       </span>
     </Link>
   );
