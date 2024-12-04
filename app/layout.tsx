@@ -19,7 +19,6 @@ export default function RootLayout({children}: { children: React.ReactNode }) {
         <footer>Copyright 2024</footer>
         </body>
         </html>
-
     )
 }
 
