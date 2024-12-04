@@ -1,7 +1,7 @@
 import CabinCard from "@/app/_components/CabinCard";
 
 export const metadata = {
-    title: "Cabins",
+    title: "Cabines",
 }
 
 
@@ -10,12 +10,13 @@ export default function Page() {
 
     return <div>
         <h1 className="text-4xl mb-5 text-accent-400 font-medium">
-            Our Luxury Cabins
+            Nos Cabines de luxe
         </h1>
         <p className="text-primary-200 text-lg mb-10">
-            Cozy yet darkened cabins, nestled deep within the heart of the Mordor. Imagine waking up to the distant rumble of Mount Doom, the fiery glow painting the sky. Spend your days wandering
-            through the ominous, shadowy lands, or perhaps find solace in your secluded cabin, resting under the ever-watchful eyes of the Dark Lord. Enjoy the haunting beauty of nature in this
-            desolate yet captivating world. A perfect retreat for those seeking an escape from the light, where peace exists only in the form of silence. Welcome to the heart of darkness.
+            Des cabanes douillettes mais obscures, nichées au cœur du Mordor. Imaginez-vous vous réveiller au son du grondement lointain du Mont Doom, la lueur ardente peignant le ciel. Passez vos
+            journées à errer dans les terres sinistres et ombragées, ou peut-être trouvez-vous du réconfort dans votre cabane isolée, en vous reposant sous les yeux toujours vigilants du Seigneur des
+            Ténèbres. Profitez de la beauté envoûtante de la nature dans ce monde désolé mais captivant. Une retraite parfaite pour ceux qui cherchent à échapper à la lumière, où la paix n&#39;existe que
+            sous la forme du silence. Bienvenue au cœur des ténèbres.
         </p>
 
         {cabins.length > 0 && (

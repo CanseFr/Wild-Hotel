@@ -1,5 +1,5 @@
 export const metadata = {
-    title: "Account",
+    title: "Votre éspace",
 }
 
 export default function Page() {
