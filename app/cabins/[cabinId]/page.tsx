@@ -3,6 +3,13 @@ import {getCabin} from "@/app/_lib/data-service";
 import {BugAntIcon} from "@heroicons/react/16/solid";
 import Image from "next/image";
 
+// Documentation : https://nextjs.org/docs/app/api-reference/functions/generate-metadata
+export async function generateMetadata({params}: any) {
+    const {name} = await getCabin(params.cabinId);
+    return {title: `Cabine ${name}`}
+}
+
+
 export default async function Page({params}: any) {
 
     const cabin = await getCabin(params.cabinId);
