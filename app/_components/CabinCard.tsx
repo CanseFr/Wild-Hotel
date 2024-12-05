@@ -9,14 +9,12 @@ export default function CabinCard({cabin}: any) {
         <div className="flex border-primary-800 border">
             <div className="flex-1 relative">
 
-            <Image
-                // width={200}
-                // height={100}
-                fill
-                src={image}
-                alt={`Cabin ${name}`}
-                className="object-cover border-r border-primary-800"
-            />
+                <Image
+                    fill
+                    src={image}
+                    alt={`Cabin ${name}`}
+                    className="object-cover border-r border-primary-800"
+                />
             </div>
 
             <div className="flex-grow">
