@@ -1,5 +1,5 @@
 import {MapPinIcon, UsersIcon} from "@heroicons/react/24/solid";
-import {getCabin} from "@/app/_lib/data-service";
+import {getCabin, getCabins} from "@/app/_lib/data-service";
 import {BugAntIcon} from "@heroicons/react/16/solid";
 import Image from "next/image";
 
@@ -9,6 +9,12 @@ export async function generateMetadata({params}: any) {
     return {title: `Cabine ${name}`}
 }
 
+//  Documentation : https://nextjs.org/docs/app/api-reference/functions/generate-static-params
+export async function generateStaticParams() {
+    const cabins = await getCabins();
+    const ids = cabins.map((c) => ({cabinId: String(c.id)}))
+    return ids
+}
 
 export default async function Page({params}: any) {
 
@@ -54,3 +60,62 @@ export default async function Page({params}: any) {
         </div>
     );
 }
+
+
+
+// generateStaticParams
+
+// npm run build avant :
+// ✓ Generating static pages (10/10)
+//  ✓ Collecting build traces
+//  ✓ Finalizing page optimization
+
+// Route (app)                              Size     First Load JS
+// ┌ ○ /                                    523 B           115 kB
+// ├ ○ /_not-found                          146 B           100 kB
+// ├ ○ /about                               1.04 kB         106 kB
+// ├ ○ /account                             146 B           100 kB
+// ├ ○ /account/profile                     791 B           106 kB
+// ├ ○ /account/reservations                146 B           100 kB
+// ├ ○ /cabins                              183 B           114 kB
+// ├ ƒ /cabins/[cabinId]                    519 B           106 kB
+// └ ○ /icon.ico                            0 B                0 B
+// + First Load JS shared by all            99.9 kB
+//   ├ chunks/4bd1b696-80bcaf75e1b4285e.js  52.5 kB
+//   ├ chunks/517-d37038eff5a4ec16.js       45.5 kB
+//   └ other shared chunks (total)          1.87 kB
+//
+//
+// ○  (Static)   prerendered as static content
+// ƒ  (Dynamic)  server-rendered on demand
+
+
+
+// npm run build apres avoir pre fetch dans generateStaticParams :
+
+// ✓ Generating static pages (15/15)
+//  ✓ Collecting build traces
+//  ✓ Finalizing page optimization
+
+// Route (app)                              Size     First Load JS
+// ┌ ○ /                                    523 B           115 kB
+// ├ ○ /_not-found                          146 B           100 kB
+// ├ ○ /about                               1.04 kB         106 kB
+// ├ ○ /account                             146 B           100 kB
+// ├ ○ /account/profile                     791 B           106 kB
+// ├ ○ /account/reservations                146 B           100 kB
+// ├ ○ /cabins                              183 B           114 kB
+// ├ ● /cabins/[cabinId]                    519 B           106 kB
+// ├   ├ /cabins/4
+// ├   ├ /cabins/5
+// ├   ├ /cabins/3
+// ├   └ [+2 more paths]
+// └ ○ /icon.ico                            0 B                0 B
+// + First Load JS shared by all            99.9 kB
+//   ├ chunks/4bd1b696-80bcaf75e1b4285e.js  52.5 kB
+//   ├ chunks/517-d37038eff5a4ec16.js       45.5 kB
+//   └ other shared chunks (total)          1.87 kB
+//
+//
+// ○  (Static)  prerendered as static content
+// ●  (SSG)     prerendered as static HTML (uses generateStaticParams)
