@@ -1,5 +1,7 @@
+import Spinner from "@/app/_components/Spinner";
+
 export default function Loading() {
-    return <p>Loading...</p>
+    return <Spinner/>
 }
 
 // https://nextjs.org/docs/app/api-reference/file-conventions/loading
