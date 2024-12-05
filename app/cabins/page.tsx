@@ -23,7 +23,6 @@ export default async function Page() {
         </p>
 
         <Suspense fallback={<Spinner/>}>
-
             <CabinList/>
         </Suspense>
 
