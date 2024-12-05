@@ -1,7 +1,8 @@
 import {MapPinIcon, UsersIcon} from "@heroicons/react/24/solid";
-import {getCabin, getCabins} from "@/app/_lib/data-service";
+import {getCabin} from "@/app/_lib/data-service";
 import {BugAntIcon} from "@heroicons/react/16/solid";
 import Image from "next/image";
+import TextExpander from "@/app/_components/TextExpander";
 
 // Documentation : https://nextjs.org/docs/app/api-reference/functions/generate-metadata
 export async function generateMetadata({params}: any) {
@@ -33,7 +34,11 @@ export default async function Page({params}: any) {
                         Cabine {name}
                     </h3>
 
-                    <p className="text-lg text-primary-300 mb-10">{description}</p>
+                    <p className="text-lg text-primary-300 mb-10">
+                        <TextExpander>
+                            {description}
+                        </TextExpander>
+                    </p>
 
                     <ul className="flex flex-col gap-4 mb-7">
                         <li className="flex gap-3 items-center">
@@ -62,7 +67,6 @@ export default async function Page({params}: any) {
 }
 
 
-
 // generateStaticParams
 
 // npm run build avant :
@@ -88,7 +92,6 @@ export default async function Page({params}: any) {
 //
 // ○  (Static)   prerendered as static content
 // ƒ  (Dynamic)  server-rendered on demand
-
 
 
 // npm run build apres avoir pre fetch dans generateStaticParams :
