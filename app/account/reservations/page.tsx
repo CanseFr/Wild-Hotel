@@ -6,7 +6,7 @@ export const metadata = {
 
 export default function Page() {
     // fecth dans la fake api ou creer object plus tard
-    const bookings = [];
+    const bookings:{id:number}[] = [];
 
     return (
         <div>
@@ -20,7 +20,7 @@ export default function Page() {
                 </p>
             ) : (
                 <ul className="space-y-6">
-                    {bookings.map((booking) => (
+                    {bookings.map((booking:{id:number}) => (
                         <ReservationCard booking={booking} key={booking.id} />
                     ))}
                 </ul>
