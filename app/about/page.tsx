@@ -1,12 +1,16 @@
 import Image from "next/image";
 import imgAbout1 from "@/public/about-1.jpg"
 import imgAbout2 from "@/public/about-2.jpg"
+import {getCabins} from "@/app/_lib/data-service";
+import Link from "next/link";
 
 export const metadata = {
     title: "About",
 }
 
-export default function Page() {
+export default async function Page() {
+
+    const cabins = await getCabins()
 
     return (
         <div className="grid grid-cols-5 gap-x-24 gap-y-32 text-lg items-center">
@@ -20,17 +24,15 @@ export default function Page() {
                     <p>
                         Où la beauté menaçante de la nature et une vie confortable se mêlent d&#39;une manière inattendue. Cachées dans les profondeurs du Mordor, ces cabanes sont votre refuge loin de
                         tout. Mais ce n&#39;est pas seulement à propos des cabanes sombres et imposantes. C&#39;est l&#39;expérience de se reconnecter avec une terre impitoyable et de profiter des
-                        plaisirs
-                        simples loin des regards du monde.
+                        plaisirs simples loin des regards du monde.
                     </p>
                     <p>
-                        Nos 8 cabanes de luxe offrent un abri confortable, mais la vraie liberté et la paix se trouvent dans les montagnes environnantes. Errez à travers des terres stériles et
+                        Nos {cabins.length} cabanes de luxe offrent un abri confortable, mais la vraie liberté et la paix se trouvent dans les montagnes environnantes. Errez à travers des terres stériles et
                         volcaniques, respirez l&#39;air lourd, et contemplez les cendres qui tombent du ciel ou la lumière incandescente de l&#39;œil de Sauron au loin.
                     </p>
                     <p>
                         C&#39;est ici que des souvenirs inoubliables sont forgés, entourés par la grandeur sombre de la nature. Un endroit pour ralentir, se détendre, et ressentir la camaraderie, loin
-                        des
-                        ruines de l&#39;ancien monde.
+                        des ruines de l&#39;ancien monde.
                     </p>
                 </div>
             </div>
@@ -73,12 +75,12 @@ export default function Page() {
 
 
                     <div>
-                        <a
+                        <Link
                             href="/cabins"
                             className="inline-block mt-4 bg-accent-500 px-8 py-5 text-primary-800 text-lg font-semibold hover:bg-accent-600 transition-all"
                         >
                             Explorez nous cabines
-                        </a>
+                        </Link>
                     </div>
                 </div>
             </div>

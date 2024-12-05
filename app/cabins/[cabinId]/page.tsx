@@ -10,11 +10,11 @@ export async function generateMetadata({params}: any) {
 }
 
 //  Documentation : https://nextjs.org/docs/app/api-reference/functions/generate-static-params
-export async function generateStaticParams() {
-    const cabins = await getCabins();
-    const ids = cabins.map((c) => ({cabinId: String(c.id)}))
-    return ids
-}
+// export async function generateStaticParams() {
+//     const cabins = await getCabins();
+//     const ids = cabins.map((c) => ({cabinId: String(c.id)}))
+//     return ids
+// }
 
 export default async function Page({params}: any) {
 
