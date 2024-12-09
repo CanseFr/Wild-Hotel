@@ -3,11 +3,12 @@ import {Suspense} from "react";
 import Spinner from "@/app/_components/Spinner";
 import {CABIN_CAPACITY} from "@/app/_enums/cabins-size";
 import Filter from "@/app/_components/Filter";
+import ReservationRemonder from "@/app/_components/ReservationReminder";
 
 export const metadata = {
     title: "Cabines",
 }
-
+//  TODO : upgrade all types of the app
 // Type de base de la documentation
 // type SearchParams = { [key: string]: string | string[] | undefined }
 
@@ -17,11 +18,6 @@ export const metadata = {
 //     [key: string]: string | string[] | undefined;
 //     capacity?: Capacity;
 // };
-
-
-
-//  Doc : https://nextjs.org/docs/app/building-your-application/upgrading/version-15#params--searchparams
-//  SearchParam est accessible exclusivement sur les fichier page.tsx
 
 export default async function Page({searchParams}: any) {
 
@@ -41,17 +37,12 @@ export default async function Page({searchParams}: any) {
 
         <div className="flex justify-end mb-8">
 
-        <Filter/>
+            <Filter/>
         </div>
-        {/*Donner une clé unique pour chaque type de filtre, permet de faire apparaitre le loader durant le changement du filtre*/}
         <Suspense fallback={<Spinner/>} key={filter}>
             <CabinList filter={filter}/>
+            <ReservationRemonder/>
         </Suspense>
     </div>
 }
 
-
-// Doc : https://nextjs.org/docs/app/building-your-application/routing/loading-ui-and-streaming#example
-
-// Maintenant, le fetch des cabines ne bloque plus l'intégralité de la page, mais seulement le composant placé dans Suspense. Ainsi, si on fait Ctrl + Shift + P (dans la console navigateur)
-// et qu'on désactive JavaScript, on peut constater que le texte apparaît, tandis que la partie liée au fetch des cabines affiche le loader. Cela permet donc d'éviter de bloquer l'ensemble de la page.
