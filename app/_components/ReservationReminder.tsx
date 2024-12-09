@@ -6,7 +6,7 @@ import {useReservation} from "@/app/_context/Reservation";
 
 export default function ReservationReminder() {
 
-    const {range} = useReservation();
+    const {range, resetRange} = useReservation();
 
     if (!range.from || !range.to) return null;
 
@@ -17,7 +17,7 @@ export default function ReservationReminder() {
                 {format(new Date(range.from), 'MMM dd yyyy')} à{' '}
                 {format(new Date(range.to), 'MMM dd yyyy')}
             </p>
-            <button className='rounded-full p-1 hover:bg-accent-600 transition-all'>
+            <button className='rounded-full p-1 hover:bg-accent-600 transition-all' onClick={resetRange}>
                 <XMarkIcon className='h-5 w-5'/>
             </button>
         </div>
