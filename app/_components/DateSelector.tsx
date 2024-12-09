@@ -3,6 +3,7 @@
 import {isWithinInterval} from "date-fns";
 import {DayPicker} from "react-day-picker";
 import "react-day-picker/dist/style.css";
+import {useState} from "react";
 
 function isAlreadyBooked(range: any, datesArr: any) {
     return (
@@ -16,19 +17,23 @@ function isAlreadyBooked(range: any, datesArr: any) {
 
 export default function DateSelector({settings, bookedDates, cabin}: any) {
 
+    const [range, setRange] = useState({from: undefined, to: undefined});
+
     const regularPrice = 23;
     const discount = 23;
     const numNights = 23;
     const cabinPrice = 23;
-    const range = {from: null, to: null};
 
     const {minBookingLength, maxBookingLength} = settings;
 
     return (
         <div className="flex flex-col justify-between">
+            {/* TODO : FIX COLOR RANGE*/}
             <DayPicker
                 className="pt-12 place-self-center"
                 mode="range"
+                onSelect={setRange}
+                selected={range}
                 min={minBookingLength + 1}
                 max={maxBookingLength}
                 fromMonth={new Date()}
@@ -44,9 +49,7 @@ export default function DateSelector({settings, bookedDates, cabin}: any) {
                         {discount > 0 ? (
                             <>
                                 <span className="text-2xl">€{regularPrice - discount}</span>
-                                <span className="line-through font-semibold text-primary-700">
-                  €{regularPrice}
-                </span>
+                                <span className="line-through font-semibold text-primary-700">€{regularPrice}</span>
                             </>
                         ) : (
                             <span className="text-2xl">€{regularPrice}</span>
