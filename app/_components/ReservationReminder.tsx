@@ -4,7 +4,7 @@ import {XMarkIcon} from '@heroicons/react/24/solid';
 import {format} from 'date-fns';
 import {useReservation} from "@/app/_context/Reservation";
 
-export default function ReservationRemonder() {
+export default function ReservationReminder() {
 
     const {range} = useReservation();
 
