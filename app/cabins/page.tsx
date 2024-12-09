@@ -1,14 +1,31 @@
 import CabinList from "@/app/_components/CabinList";
 import {Suspense} from "react";
 import Spinner from "@/app/_components/Spinner";
+import {CABIN_CAPACITY} from "@/app/_enums/cabins-size";
+import Filter from "@/app/_components/Filter";
 
 export const metadata = {
     title: "Cabines",
 }
 
+// Type de base de la documentation
+// type SearchParams = { [key: string]: string | string[] | undefined }
 
-export default async function Page() {
+//  Type que j'essai de custom
+// type Capacity = "small" | "medium" | "large" | "all";
+// type SearchParams = {
+//     [key: string]: string | string[] | undefined;
+//     capacity?: Capacity;
+// };
 
+
+
+//  Doc : https://nextjs.org/docs/app/building-your-application/upgrading/version-15#params--searchparams
+//  SearchParam est accessible exclusivement sur les fichier page.tsx
+
+export default async function Page({searchParams}: any) {
+
+    const filter = searchParams?.capacity ?? CABIN_CAPACITY.ALL;
 
     return <div>
         <h1 className="text-4xl mb-5 text-accent-400 font-medium">
@@ -22,10 +39,14 @@ export default async function Page() {
             sous la forme du silence. Bienvenue au cœur des ténèbres.
         </p>
 
-        <Suspense fallback={<Spinner/>}>
-            <CabinList/>
-        </Suspense>
+        <div className="flex justify-end mb-8">
 
+        <Filter/>
+        </div>
+        {/*Donner une clé unique pour chaque type de filtre, permet de faire apparaitre le loader durant le changement du filtre*/}
+        <Suspense fallback={<Spinner/>} key={filter}>
+            <CabinList filter={filter}/>
+        </Suspense>
     </div>
 }
 
