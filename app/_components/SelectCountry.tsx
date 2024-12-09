@@ -1,3 +1,5 @@
+"use server"
+
 import {getCountries} from "@/app/_lib/data-service";
 
 export default async function SelectCountry({ defaultCountry, name, id, className }: any) {
