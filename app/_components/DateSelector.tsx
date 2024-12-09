@@ -3,7 +3,7 @@
 import {isWithinInterval} from "date-fns";
 import {DayPicker} from "react-day-picker";
 import "react-day-picker/dist/style.css";
-import {useState} from "react";
+import {useReservation} from "@/app/_context/Reservation";
 
 function isAlreadyBooked(range: any, datesArr: any) {
     return (
@@ -17,7 +17,7 @@ function isAlreadyBooked(range: any, datesArr: any) {
 
 export default function DateSelector({settings, bookedDates, cabin}: any) {
 
-    const [range, setRange] = useState({from: undefined, to: undefined});
+    const {range, setRange, resetRange} = useReservation();
 
     const regularPrice = 23;
     const discount = 23;
@@ -72,7 +72,7 @@ export default function DateSelector({settings, bookedDates, cabin}: any) {
                 {range.from || range.to ? (
                     <button
                         className="border border-primary-800 py-2 px-4 text-sm font-semibold"
-                        onClick={() => resetRange()}
+                        onClick={resetRange}
                     >
                         Supprimer
                     </button>

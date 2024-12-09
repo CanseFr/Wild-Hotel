@@ -1,3 +1,6 @@
+"use client"
+
+
 export default function ReservationForm({cabin}: any) {
 
     const {maxCapacity} = cabin;

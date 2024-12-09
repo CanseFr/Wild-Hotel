@@ -13,9 +13,6 @@ export async function getCabin(id) {
         .eq('id', id)
         .single();
 
-    // test
-    // await new Promise((res) => setTimeout(res, 1000));
-
     if (error) {
         console.error(error);
         // Docu : https://nextjs.org/docs/app/api-reference/functions/not-found
